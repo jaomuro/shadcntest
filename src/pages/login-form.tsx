@@ -21,6 +21,7 @@ import {
   FormLabel,
 } from "@/components/ui/form";
 import { Link } from "react-router-dom";
+import { useAuth } from "@/context/useAuth";
 
 const loginSchema = z.object({
   username: z.string().min(2),
@@ -32,6 +33,8 @@ const loginSchema = z.object({
 type loginSchemaType = z.infer<typeof loginSchema>;
 
 export function LoginForm() {
+  const { login } = useAuth();
+
   const form = useForm<loginSchemaType>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
@@ -49,6 +52,8 @@ export function LoginForm() {
         </pre>
       ),
     });
+
+    login(data.username, data.password);
   }
 
   return (

@@ -4,7 +4,6 @@ import { LoginForm } from "./pages/login-form";
 import { SignUpForm } from "./pages/singup-form";
 import { NotFound } from "./pages/not-found";
 import { PrivateRoutes } from "./ProtectedRoutes/protected-routes";
-
 export function Router() {
   return (
     <Routes>
