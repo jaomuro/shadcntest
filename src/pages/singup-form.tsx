@@ -20,27 +20,26 @@ import {
   FormItem,
   FormLabel,
 } from "@/components/ui/form";
-import { Link } from "react-router-dom";
 
-const loginSchema = z.object({
+const signUpSchema = z.object({
   username: z.string().min(2),
   password: z
     .string()
     .min(5, { message: "A senha precisa ter no mínimo 8 caracteres" }),
 });
 
-type loginSchemaType = z.infer<typeof loginSchema>;
+type SignUpSchemaType = z.infer<typeof signUpSchema>;
 
-export function LoginForm() {
-  const form = useForm<loginSchemaType>({
-    resolver: zodResolver(loginSchema),
+export function SignUpForm() {
+  const form = useForm<SignUpSchemaType>({
+    resolver: zodResolver(signUpSchema),
     defaultValues: {
       password: "",
       username: "",
     },
   });
 
-  function onSubmit(data: loginSchemaType) {
+  function onSubmit(data: SignUpSchemaType) {
     toast({
       title: "You submitted the following values:",
       description: (
@@ -54,10 +53,8 @@ export function LoginForm() {
   return (
     <Card className="mx-auto max-w-sm">
       <CardHeader className="space-y-1">
-        <CardTitle className="text-2xl font-bold">Entrar</CardTitle>
-        <CardDescription>
-          Adicione seu usuário e senha para entrar na sua conta
-        </CardDescription>
+        <CardTitle className="text-2xl font-bold">Cadastre-se</CardTitle>
+        <CardDescription>Crie sua conta</CardDescription>
       </CardHeader>
       <CardContent>
         <Form {...form}>
@@ -86,9 +83,9 @@ export function LoginForm() {
                 </FormItem>
               )}
             ></FormField>
-            <Button type="submit">Entrar</Button>
+            <Button type="submit">Criar</Button>
             <Button asChild variant={"link"}>
-              <Link to="/register">cadastre-se</Link>
+              <a href="/login">Realize o login</a>
             </Button>
           </form>
         </Form>
