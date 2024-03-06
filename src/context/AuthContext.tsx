@@ -1,10 +1,4 @@
-import {
-  PropsWithChildren,
-  createContext,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import { PropsWithChildren, createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "@/components/ui/use-toast";
 
@@ -13,8 +7,14 @@ interface User {
   password: string;
 }
 
+interface UserAuthenticated {
+  username: string;
+  auth: boolean;
+  token: string;
+}
+
 interface AuthContextProps {
-  isAuthenticated: boolean;
+  isAuthenticated: UserAuthenticated | null;
   users: User[];
   login: (usename: string, password: string) => void;
   logout: () => void;
@@ -24,13 +24,14 @@ interface AuthContextProps {
 export const AuthContext = createContext({} as AuthContextProps);
 
 export function AuthContextProvider({ children }: PropsWithChildren) {
-  const [isAuthenticated, setIsAuthenticated] = useState(() => {
-    const storedValue = localStorage.getItem("isAuthenticated");
-    return storedValue ? JSON.parse(storedValue) : false;
-  });
+  const [isAuthenticated, setIsAuthenticated] =
+    useState<UserAuthenticated | null>(() => {
+      const storedValue = localStorage.getItem("isAuthenticated");
+      return storedValue ? JSON.parse(storedValue) : null;
+    });
 
   const [users, setUsers] = useState<User[]>(() => {
-    const storedUsers = localStorage.getItem("users");
+    const storedUsers = localStorage.getItem("usersDb");
     return storedUsers
       ? JSON.parse(storedUsers)
       : [{ username: "jhon", password: "12345678" }];
@@ -38,15 +39,31 @@ export function AuthContextProvider({ children }: PropsWithChildren) {
 
   useEffect(() => {
     localStorage.setItem("isAuthenticated", JSON.stringify(isAuthenticated));
-  }, [isAuthenticated]);
+    localStorage.setItem("usersDb", JSON.stringify(users));
+  }, [isAuthenticated, users]);
 
   const navigate = useNavigate();
 
-  function register({username, password}: )
+  function register({ username, password }: User) {
+    setUsers((state) => {
+      return [...state, { username, password }];
+    });
+  }
 
   function login(username: string, password: string) {
-    if (username === "jhon" && password === "12345678") {
+    console.log(users);
+    const isUserMatch = users.find(
+      (user) => user.username === username && user.password === password
+    );
+
+    if (isUserMatch) {
       navigate("/");
+      const token = Math.random().toString(36);
+      const currentUser = {
+        username,
+        auth: true,
+        token,
+      };
       toast({
         title: "You submitted the following values:",
         description: (
@@ -55,25 +72,27 @@ export function AuthContextProvider({ children }: PropsWithChildren) {
           </pre>
         ),
       });
-      return setIsAuthenticated(true);
+      return setIsAuthenticated(currentUser);
     }
     toast({
       title: "You submitted the following values:",
       description: (
         <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4 text-white">
-          <p>Login não realizado</p>
+          <p>Login não realizado {String(isUserMatch)}</p>
         </pre>
       ),
     });
-    return setIsAuthenticated(false);
+    return setIsAuthenticated(null);
   }
 
   function logout() {
-    setIsAuthenticated(false);
+    setIsAuthenticated(null);
   }
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, login, logout }}>
+    <AuthContext.Provider
+      value={{ isAuthenticated, login, logout, register, users }}
+    >
       {children}
     </AuthContext.Provider>
   );

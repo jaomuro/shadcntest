@@ -20,6 +20,7 @@ import {
   FormItem,
   FormLabel,
 } from "@/components/ui/form";
+import { useAuth } from "@/context/useAuth";
 
 const signUpSchema = z.object({
   username: z.string().min(2),
@@ -31,6 +32,8 @@ const signUpSchema = z.object({
 type SignUpSchemaType = z.infer<typeof signUpSchema>;
 
 export function SignUpForm() {
+  const { register } = useAuth();
+
   const form = useForm<SignUpSchemaType>({
     resolver: zodResolver(signUpSchema),
     defaultValues: {
@@ -48,6 +51,8 @@ export function SignUpForm() {
         </pre>
       ),
     });
+
+    register(data);
   }
 
   return (
