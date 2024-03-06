@@ -1,3 +1,4 @@
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -11,14 +12,16 @@ import { useAuth } from "@/context/useAuth";
 import { Link } from "react-router-dom";
 
 export function Home() {
-  const { logout } = useAuth();
+  const { logout, isAuthenticated } = useAuth();
 
   return (
     <Card className="min-w-96">
       <CardHeader>
         <CardTitle>Home</CardTitle>
+
         <CardDescription>
           Aqui será a página inicial da aplicação
+          {isAuthenticated?.role === "admin" && <Badge>Admin</Badge>}
         </CardDescription>
       </CardHeader>
       <CardContent>

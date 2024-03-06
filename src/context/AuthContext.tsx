@@ -11,6 +11,7 @@ interface UserAuthenticated {
   username: string;
   auth: boolean;
   token: string;
+  role: string;
 }
 
 interface AuthContextProps {
@@ -63,6 +64,7 @@ export function AuthContextProvider({ children }: PropsWithChildren) {
         username,
         auth: true,
         token,
+        role: "test",
       };
       toast({
         title: "You submitted the following values:",
