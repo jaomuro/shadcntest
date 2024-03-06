@@ -64,7 +64,7 @@ export function AuthContextProvider({ children }: PropsWithChildren) {
         username,
         auth: true,
         token,
-        role: "test",
+        role: "noc",
       };
       toast({
         title: "You submitted the following values:",
