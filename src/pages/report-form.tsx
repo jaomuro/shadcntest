@@ -40,6 +40,7 @@ import {
   CommandItem,
 } from "@/components/ui/command";
 import { cn } from "@/lib/utils";
+import { DateTimePickerDemo } from "@/components/date-time-picker-demo";
 
 const newReportSchema = z.object({
   ofensor: z.string(),
@@ -254,7 +255,20 @@ export function NewReportForm() {
                 options={languages}
                 formLabel="Designação"
               />
-            </form>
+              <FormField 
+              control={form.control}
+              name='inicioDoIncidente'
+              render={({field}) => (
+                <FormItem>
+                    <FormLabel>Inicio do incidente</FormLabel>
+                    <DateTimePickerDemo field={field}>
+                      
+                    </DateTimePickerDemo>
+                </FormItem>
+              )}
+              
+              />
+            </form> 
           </Form>
         </div>
         <DialogFooter>
