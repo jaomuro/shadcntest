@@ -53,6 +53,7 @@ const newReportSchema = z.object({
   // impactP2P: z.number(),
   // operadoraResponsavel: z.string(),
   // circuitoDaOperadora: z.string(),
+  // affectedAcessNetwork: z.array(),
 });
 
 interface OptionType {
@@ -115,7 +116,9 @@ function SelectOfensor({
           <FormLabel>{formLabel}</FormLabel>
           <Select onValueChange={field.onChange} defaultValue={field.value}>
             <FormControl>
-              <SelectTrigger>
+              <SelectTrigger
+                className={cn(!field.value && "text-muted-foreground")}
+              >
                 <SelectValue placeholder={`Escolha um ` + formLabel} />
               </SelectTrigger>
             </FormControl>
@@ -154,7 +157,7 @@ function ComboBoxDesignator({
                   role="combobox"
                   className={cn(
                     "w-full font-normal justify-between",
-                    !field.value
+                    !field.value && "text-muted-foreground"
                   )}
                 >
                   {field.value
@@ -208,6 +211,7 @@ export function NewReportForm() {
   });
 
   function onSubmit(data: newReportSchemaType) {
+    console.log(data);
     toast({
       title: "You submitted the following values:",
       description: (
@@ -234,7 +238,7 @@ export function NewReportForm() {
           <Form {...form}>
             <form
               id="reportform"
-              className="grid grid-cols-3 space-x-2"
+              className="grid grid-cols-3 gap-2"
               onSubmit={form.handleSubmit(onSubmit)}
             >
               <SelectOfensor
@@ -255,20 +259,17 @@ export function NewReportForm() {
                 options={languages}
                 formLabel="Designação"
               />
-              <FormField 
-              control={form.control}
-              name='inicioDoIncidente'
-              render={({field}) => (
-                <FormItem>
+              <FormField
+                control={form.control}
+                name="inicioDoIncidente"
+                render={({ field }) => (
+                  <FormItem>
                     <FormLabel>Inicio do incidente</FormLabel>
-                    <DateTimePickerDemo field={field}>
-                      
-                    </DateTimePickerDemo>
-                </FormItem>
-              )}
-              
+                    <DateTimePickerDemo field={field}></DateTimePickerDemo>
+                  </FormItem>
+                )}
               />
-            </form> 
+            </form>
           </Form>
         </div>
         <DialogFooter>

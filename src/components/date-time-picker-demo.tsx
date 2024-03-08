@@ -1,8 +1,6 @@
- 
-import * as React from "react";
 import { format } from "date-fns";
-import {  CalendarIcon } from "@radix-ui/react-icons";
- 
+import { CalendarIcon } from "@radix-ui/react-icons";
+
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
@@ -12,22 +10,27 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { TimePickerDemo } from "@/components/time-picker-demo";
- 
-export function DateTimePickerDemo({field}: any) {
-//   const [date, setDate] = React.useState<Date>();
- 
+
+export function DateTimePickerDemo({ field }: any) {
+  //   const [date, setDate] = React.useState<Date>();
+
   return (
     <Popover>
       <PopoverTrigger asChild>
         <Button
-          variant={"outline"}
+          size={"combobox"}
+          variant={"combobox"}
           className={cn(
-            "w-[280px] justify-start text-left font-normal",
+            "w-full justify-start text-left font-normal",
             !field.value && "text-muted-foreground"
           )}
         >
           <CalendarIcon className="mr-2 h-4 w-4" />
-          {field.value ? format(field.value, "PPP HH:mm:ss") : <span>Pick a date</span>}
+          {field.value ? (
+            format(field.value, "PPP HH:mm:ss")
+          ) : (
+            <span>Pick a date</span>
+          )}
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-auto p-0">
