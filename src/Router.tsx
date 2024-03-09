@@ -5,7 +5,7 @@ import { SignUpForm } from "./pages/singup-form";
 import { NotFound } from "./pages/not-found";
 import { PrivateRoutes } from "./ProtectedRoutes/protected-routes";
 import { DateTimePickerDemoWithFormShadcnUI } from "./components/time-picker-demo-in-form-shadcn";
-import MultipleSelectorWithForm from "./pages/multiple-select";
+import { DinamicForm } from "./testes/dinamic-form";
 export function Router() {
   return (
     <Routes>
@@ -19,7 +19,7 @@ export function Router() {
         path="/datetime"
         element={<DateTimePickerDemoWithFormShadcnUI />}
       />
-      <Route path="/multiselect" element={<MultipleSelectorWithForm />} />
+      <Route path="/test" element={<DinamicForm />} />
     </Routes>
   );
 }
