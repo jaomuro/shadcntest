@@ -6,6 +6,7 @@ import { NotFound } from "./pages/not-found";
 import { PrivateRoutes } from "./ProtectedRoutes/protected-routes";
 import { DateTimePickerDemoWithFormShadcnUI } from "./components/time-picker-demo-in-form-shadcn";
 import { SimpleForm } from "./testes/shadcnWithRHF";
+import { NewReportForm } from "./pages/report-form";
 export function Router() {
   return (
     <Routes>
@@ -19,7 +20,7 @@ export function Router() {
         path="/datetime"
         element={<DateTimePickerDemoWithFormShadcnUI />}
       />
-      <Route path="/test" element={<SimpleForm />} />
+      <Route path="/test" element={<NewReportForm />} />
     </Routes>
   );
 }

@@ -238,10 +238,262 @@ export function NewReportForm() {
           <Form {...form}>
             <form
               id="reportform"
-              className="grid grid-cols-3 gap-2"
+              className="grid grid-cols-5 gap-2"
               onSubmit={form.handleSubmit(onSubmit)}
             >
               <SelectOfensor
+                form={form}
+                options={tipoDeIncidenteOption}
+                fieldName="tipoDeIncidente"
+                formLabel="Tipo de incidente"
+              />
+              <SelectOfensor
+                form={form}
+                options={ofensorOption}
+                fieldName="ofensor"
+                formLabel="Ofensor"
+              />
+              <ComboBoxDesignator
+                form={form}
+                fieldName="designador"
+                options={languages}
+                formLabel="Designação"
+              />
+              <FormField
+                control={form.control}
+                name="inicioDoIncidente"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Inicio do incidente</FormLabel>
+                    <DateTimePickerDemo field={field}></DateTimePickerDemo>
+                  </FormItem>
+                )}
+              />
+               <SelectOfensor
+                form={form}
+                options={tipoDeIncidenteOption}
+                fieldName="tipoDeIncidente"
+                formLabel="Tipo de incidente"
+              />
+              <SelectOfensor
+                form={form}
+                options={ofensorOption}
+                fieldName="ofensor"
+                formLabel="Ofensor"
+              />
+              <ComboBoxDesignator
+                form={form}
+                fieldName="designador"
+                options={languages}
+                formLabel="Designação"
+              />
+              <FormField
+                control={form.control}
+                name="inicioDoIncidente"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Inicio do incidente</FormLabel>
+                    <DateTimePickerDemo field={field}></DateTimePickerDemo>
+                  </FormItem>
+                )}
+              />
+               <SelectOfensor
+                form={form}
+                options={tipoDeIncidenteOption}
+                fieldName="tipoDeIncidente"
+                formLabel="Tipo de incidente"
+              />
+              <SelectOfensor
+                form={form}
+                options={ofensorOption}
+                fieldName="ofensor"
+                formLabel="Ofensor"
+              />
+              <ComboBoxDesignator
+                form={form}
+                fieldName="designador"
+                options={languages}
+                formLabel="Designação"
+              />
+              <FormField
+                control={form.control}
+                name="inicioDoIncidente"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Inicio do incidente</FormLabel>
+                    <DateTimePickerDemo field={field}></DateTimePickerDemo>
+                  </FormItem>
+                )}
+              />
+               <SelectOfensor
+                form={form}
+                options={tipoDeIncidenteOption}
+                fieldName="tipoDeIncidente"
+                formLabel="Tipo de incidente"
+              />
+              <SelectOfensor
+                form={form}
+                options={ofensorOption}
+                fieldName="ofensor"
+                formLabel="Ofensor"
+              />
+              <ComboBoxDesignator
+                form={form}
+                fieldName="designador"
+                options={languages}
+                formLabel="Designação"
+              />
+              <FormField
+                control={form.control}
+                name="inicioDoIncidente"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Inicio do incidente</FormLabel>
+                    <DateTimePickerDemo field={field}></DateTimePickerDemo>
+                  </FormItem>
+                )}
+              />
+               <SelectOfensor
+                form={form}
+                options={tipoDeIncidenteOption}
+                fieldName="tipoDeIncidente"
+                formLabel="Tipo de incidente"
+              />
+              <SelectOfensor
+                form={form}
+                options={ofensorOption}
+                fieldName="ofensor"
+                formLabel="Ofensor"
+              />
+              <ComboBoxDesignator
+                form={form}
+                fieldName="designador"
+                options={languages}
+                formLabel="Designação"
+              />
+              <FormField
+                control={form.control}
+                name="inicioDoIncidente"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Inicio do incidente</FormLabel>
+                    <DateTimePickerDemo field={field}></DateTimePickerDemo>
+                  </FormItem>
+                )}
+              />
+               <SelectOfensor
+                form={form}
+                options={tipoDeIncidenteOption}
+                fieldName="tipoDeIncidente"
+                formLabel="Tipo de incidente"
+              />
+              <SelectOfensor
+                form={form}
+                options={ofensorOption}
+                fieldName="ofensor"
+                formLabel="Ofensor"
+              />
+              <ComboBoxDesignator
+                form={form}
+                fieldName="designador"
+                options={languages}
+                formLabel="Designação"
+              />
+              <FormField
+                control={form.control}
+                name="inicioDoIncidente"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Inicio do incidente</FormLabel>
+                    <DateTimePickerDemo field={field}></DateTimePickerDemo>
+                  </FormItem>
+                )}
+              />
+               <SelectOfensor
+                form={form}
+                options={tipoDeIncidenteOption}
+                fieldName="tipoDeIncidente"
+                formLabel="Tipo de incidente"
+              />
+              <SelectOfensor
+                form={form}
+                options={ofensorOption}
+                fieldName="ofensor"
+                formLabel="Ofensor"
+              />
+              <ComboBoxDesignator
+                form={form}
+                fieldName="designador"
+                options={languages}
+                formLabel="Designação"
+              />
+              <FormField
+                control={form.control}
+                name="inicioDoIncidente"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Inicio do incidente</FormLabel>
+                    <DateTimePickerDemo field={field}></DateTimePickerDemo>
+                  </FormItem>
+                )}
+              />
+               <SelectOfensor
+                form={form}
+                options={tipoDeIncidenteOption}
+                fieldName="tipoDeIncidente"
+                formLabel="Tipo de incidente"
+              />
+              <SelectOfensor
+                form={form}
+                options={ofensorOption}
+                fieldName="ofensor"
+                formLabel="Ofensor"
+              />
+              <ComboBoxDesignator
+                form={form}
+                fieldName="designador"
+                options={languages}
+                formLabel="Designação"
+              />
+              <FormField
+                control={form.control}
+                name="inicioDoIncidente"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Inicio do incidente</FormLabel>
+                    <DateTimePickerDemo field={field}></DateTimePickerDemo>
+                  </FormItem>
+                )}
+              />
+               <SelectOfensor
+                form={form}
+                options={tipoDeIncidenteOption}
+                fieldName="tipoDeIncidente"
+                formLabel="Tipo de incidente"
+              />
+              <SelectOfensor
+                form={form}
+                options={ofensorOption}
+                fieldName="ofensor"
+                formLabel="Ofensor"
+              />
+              <ComboBoxDesignator
+                form={form}
+                fieldName="designador"
+                options={languages}
+                formLabel="Designação"
+              />
+              <FormField
+                control={form.control}
+                name="inicioDoIncidente"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Inicio do incidente</FormLabel>
+                    <DateTimePickerDemo field={field}></DateTimePickerDemo>
+                  </FormItem>
+                )}
+              />
+               <SelectOfensor
                 form={form}
                 options={tipoDeIncidenteOption}
                 fieldName="tipoDeIncidente"
