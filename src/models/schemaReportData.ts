@@ -65,15 +65,15 @@ const IncidentReportSchema = z.object({
     offenderType: z.string(),               //via form
     circuitDesignation: z.string(),          //via form
     customersImpact: z.array(CustomersImpact),  // [{}, {}, {}]  //via form apenas na atualização de chamado
-    affectedRegions: z.array(z.string()),   // via f
+    affectedRegions: z.array(z.string()),   // via form
 
-    affectedAcessNetwork: z.array(AffectedAcessNetwork),
-    timeDetails: TimeDetails,
-    reportInitial: ReportDetails,
-    reports: z.array(ReportDetails),
-    incidenteAnalysis: IncidenteAnalysis,
-    carrierInformation: CarrierInformation,
-    networkingIntervenction: z.array(NetworkIntervention)
+    affectedAcessNetwork: z.array(AffectedAcessNetwork), // via form caso seja escolhido o tipo de falha de R.A
+    timeDetails: TimeDetails, //via form incidentEnd e updatedForecast vão null
+    reportInitial: ReportDetails, // antes de encaminhar para o backend será montado de acordo com as informações recebidas no form
+    reports: z.array(ReportDetails), //via form de atualização apenas
+    incidenteAnalysis: IncidenteAnalysis, // via atualização apenas 
+    carrierInformation: CarrierInformation, // via atualização apenas
+    networkingIntervenction: z.array(NetworkIntervention) //via atualização apenas
 })
 
 type IncidentReportType = z.infer<typeof IncidentReportSchema>
